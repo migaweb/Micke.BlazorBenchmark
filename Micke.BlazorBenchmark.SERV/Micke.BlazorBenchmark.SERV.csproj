@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Micke.BlazorBenchmark.GeneralUI\Micke.BlazorBenchmark.GeneralUI.csproj" />
+    <ProjectReference Include="..\Micke.BlazorBenchmark.WASM\Shared\Micke.BlazorBenchmark.WASM.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

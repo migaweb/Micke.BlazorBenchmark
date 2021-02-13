@@ -1,0 +1,38 @@
+﻿<h3>FileContent</h3>
+<div>
+    Last operation took @ProcessingTimeMs ms
+    <br />
+    Items: @ItemCount
+    <br />
+    <button @onclick="HandleAddToIndexedDb">Add to IndexedDB</button>
+    <button @onclick="HandleDeleteFromIndexedDb">Delete from IndexedDB</button>
+    <button @onclick="HandleLoadArticlesFromIndexedDb">Load from IndexedDB</button>
+    <button @onclick="AddTenToPrice">Add 10 to price</button>
+    <button @onclick="HandleClearTable">Clear table</button>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Supplier id</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Main group</th>
+            <th>Sub group</th>
+            <th>Ean</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var article in Articles) {
+        <tr>
+            <td><b>@article.Id</b></td>
+            <td>@article.SupplierId</td>
+            <td>@article.Description</td>
+            <td>@article.Price</td>
+            <td>@article.MainGroupId</td>
+            <td>@article.SubGroupId</td>
+            <td>@article.Ean</td>
+        </tr>
+        }
+    </tbody>
+</table>
