@@ -1,6 +1,5 @@
 using Micke.BlazorBenchmark.GeneralUI;
 using Micke.BlazorBenchmark.GeneralUI.Components.BusyOverlay;
-using Micke.BlazorBenchmark.SERV.Data;
 using Micke.BlazorBenchmark.Services.Services;
 using Micke.BlazorBenchmark.WASM.Shared.Contracts;
 using Micke.BlazorBenchmark.WASM.Shared.Entities;
@@ -34,9 +33,26 @@ namespace Micke.BlazorBenchmark.SERV
     {
       services.AddScoped(sp => new HttpClient());
 
+      //https://docs.microsoft.com/en-us/aspnet/core/signalr/streaming?view=aspnetcore-3.1
+      // There is a problem sending "large" chunks of data on the signalr connection
+      // Using the solution on this stack overflow page for now to increase
+      // max receive message size:
+      //https://stackoverflow.com/questions/60311852/error-connection-disconnected-with-error-error-server-returned-an-error-on-cl
+      services.AddSignalR(e => {
+        e.MaximumReceiveMessageSize = 102400000;
+      });
+
       services.AddRazorPages();
-      services.AddServerSideBlazor();
-      services.AddSingleton<WeatherForecastService>();
+      //services.AddServerSideBlazor();
+
+      services.AddServerSideBlazor(options =>
+      {
+        options.DetailedErrors = true;
+        options.DisconnectedCircuitMaxRetained = 100;
+        options.DisconnectedCircuitRetentionPeriod = TimeSpan.FromMinutes(3);
+        options.JSInteropDefaultCallTimeout = TimeSpan.FromMinutes(1);
+        options.MaxBufferedUnacknowledgedRenderBatches = 10;
+      });
 
       services.AddScoped<IPersistenceService, IndexedDB>();
       services.AddScoped<IExcelReader<Article>, ArticleExcelReader>();

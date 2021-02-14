@@ -32,7 +32,7 @@ namespace Micke.BlazorBenchmark.GeneralUI
     public async Task<IEnumerable<T>> GetAllAsync<T>() where T : BaseItem
     {
       var tableName = typeof(T).Name;
-      var result = await _jsRuntime.InvokeAsync<T[]>("organizeIndexedDB.getAllAsync", tableName);
+      var result = await _jsRuntime.InvokeAsync<T[]>("organizeIndexedDB.getAllAsync", tableName).ConfigureAwait(false);
 
       return result;
     }

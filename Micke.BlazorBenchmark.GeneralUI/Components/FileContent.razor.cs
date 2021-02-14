@@ -56,7 +56,6 @@ namespace Micke.BlazorBenchmark.GeneralUI.Components
       stopwatch.Stop();
       ProcessingTimeMs = stopwatch.ElapsedMilliseconds;
       BusyOverlayService.SetBusyState(BusyEnum.NotBusy);
-      //StateHasChanged();
     }
 
     private void HandleClearTable()
@@ -68,8 +67,6 @@ namespace Micke.BlazorBenchmark.GeneralUI.Components
       Articles.Clear();
 
       ItemCount = 0;
-
-      StateHasChanged();
 
       stopwatch.Stop();
       ProcessingTimeMs = stopwatch.ElapsedMilliseconds;
@@ -87,8 +84,6 @@ namespace Micke.BlazorBenchmark.GeneralUI.Components
       Articles = result.ToList();
 
       ItemCount = Articles.Count();
-
-      StateHasChanged();
 
       stopwatch.Stop();
       ProcessingTimeMs = stopwatch.ElapsedMilliseconds;
