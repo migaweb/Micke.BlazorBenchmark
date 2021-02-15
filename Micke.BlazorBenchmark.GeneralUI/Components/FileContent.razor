@@ -1,8 +1,11 @@
 ﻿<h3>FileContent</h3>
 <div>
-    Last operation took @ProcessingTimeMs ms
+    Items: @ItemCount, Timer: @ProcessingTimeMs ms
     <br />
-    Items: @ItemCount
+    <label for="@nameof(UiUpdates)">
+        View progress
+        <input type="checkbox" @bind="UiUpdates" />
+    </label>
     <br />
     <button @onclick="HandleAddToIndexedDb">Add to IndexedDB</button>
     <button @onclick="HandleDeleteFromIndexedDb">Delete from IndexedDB</button>

@@ -26,6 +26,8 @@ namespace Micke.BlazorBenchmark.GeneralUI.Components
 
     private int ItemCount { get; set; } = 0;
 
+    private bool UiUpdates { get; set; } = true;
+
     protected override async Task OnInitializedAsync()
     {
       await PersistenceService.InitAsync();
@@ -34,6 +36,7 @@ namespace Micke.BlazorBenchmark.GeneralUI.Components
 
     private async Task AddTenToPrice()
     {
+      ProcessingTimeMs = 0;
       BusyOverlayService.SetBusyState(BusyEnum.Busy);
       var stopwatch = new Stopwatch();
       stopwatch.Start();
@@ -41,16 +44,43 @@ namespace Micke.BlazorBenchmark.GeneralUI.Components
       // Load all articles from the DB
       Articles = (await PersistenceService.GetAllAsync<Article>()).ToList();
       // Display in table
+      ProcessingTimeMs = stopwatch.ElapsedMilliseconds;
+      await Task.Yield();
       StateHasChanged();
       // Add price
+      int counter = 0;
       foreach (var article in Articles)
       {
         article.Price += 10;
+
+        if (!UiUpdates) continue;
+
+        ItemCount = ++counter;
+        ProcessingTimeMs = stopwatch.ElapsedMilliseconds;
+
+        if ((counter % 100) == 0 || counter == Articles.Count)
+        {
+          StateHasChanged();
+          await Task.Delay(1);
+        }
       }
+
+      var counter2 = 0;
       // Update all articles in DB
       foreach (var article in Articles)
       {
         await PersistenceService.UpdateAsync<Article>(article);
+
+        if (!UiUpdates) continue;
+
+        ItemCount = ++counter2;
+        ProcessingTimeMs = stopwatch.ElapsedMilliseconds;
+
+        if ((counter2 % 100) == 0 || counter2 == Articles.Count)
+        {
+          StateHasChanged();
+          await Task.Delay(1);
+        }
       }
 
       stopwatch.Stop();
@@ -99,17 +129,36 @@ namespace Micke.BlazorBenchmark.GeneralUI.Components
       foreach (var article in Articles)
       {
         await PersistenceService.DeleteAsync<Article>(article);
+        if (!UiUpdates) continue;
+
         ItemCount = Math.Max(0, ItemCount--);
+        ProcessingTimeMs = stopwatch.ElapsedMilliseconds;
+
+        if ((ItemCount % 100) == 0 || ItemCount  == Articles.Count)
+        {
+          StateHasChanged();
+          await Task.Delay(1);
+        }
+        
       }
 
       ItemCount = 0;
       foreach (var article in Articles)
       {
         await PersistenceService.InsertAsync<Article>(article);
+        if (!UiUpdates) continue;
+
         ItemCount++;
+        ProcessingTimeMs = stopwatch.ElapsedMilliseconds;
+
+        if ((ItemCount % 100) == 0 || ItemCount == Articles.Count)
+        {
+          StateHasChanged();
+          await Task.Delay(1);
+        }
+        
       }
 
-      StateHasChanged();
       stopwatch.Stop();
       ProcessingTimeMs = stopwatch.ElapsedMilliseconds;
       BusyOverlayService.SetBusyState(BusyEnum.NotBusy);
@@ -122,14 +171,22 @@ namespace Micke.BlazorBenchmark.GeneralUI.Components
       stopwatch.Start();
 
       ItemCount = Articles.Count;
-      StateHasChanged();
+
       foreach (var article in Articles)
       {
         await PersistenceService.DeleteAsync<Article>(article);
+        if (!UiUpdates) continue;
+
         ItemCount = Math.Max(0, ItemCount--);
+        ProcessingTimeMs = stopwatch.ElapsedMilliseconds;
+
+        if ((ItemCount % 100) == 0 || ItemCount == Articles.Count)
+        {
+          StateHasChanged();
+          await Task.Delay(1);
+        }
       }
 
-      StateHasChanged();
       stopwatch.Stop();
       ProcessingTimeMs = stopwatch.ElapsedMilliseconds;
       BusyOverlayService.SetBusyState(BusyEnum.NotBusy);
