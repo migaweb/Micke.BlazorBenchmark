@@ -26,16 +26,8 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var article in Articles) {
-        <tr>
-            <td><b>@article.Id</b></td>
-            <td>@article.SupplierId</td>
-            <td>@article.Description</td>
-            <td>@article.Price</td>
-            <td>@article.MainGroupId</td>
-            <td>@article.SubGroupId</td>
-            <td>@article.Ean</td>
-        </tr>
-        }
+        <Virtualize Items="@Articles" Context="article">
+            <FileRow article="article" />
+        </Virtualize>
     </tbody>
 </table>

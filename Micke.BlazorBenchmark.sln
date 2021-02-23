@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micke.BlazorBenchmark.WASM.Server", "Micke.BlazorBenchmark.WASM\Server\Micke.BlazorBenchmark.WASM.Server.csproj", "{CA4A68DF-7937-4066-8172-9882DE297968}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micke.BlazorBenchmark.WASM.Server", "Micke.BlazorBenchmark.WASM\Server\Micke.BlazorBenchmark.WASM.Server.csproj", "{CA4A68DF-7937-4066-8172-9882DE297968}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micke.BlazorBenchmark.WASM.Client", "Micke.BlazorBenchmark.WASM\Client\Micke.BlazorBenchmark.WASM.Client.csproj", "{D233FE17-6337-4909-AF54-E00DFC44942C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micke.BlazorBenchmark.WASM.Client", "Micke.BlazorBenchmark.WASM\Client\Micke.BlazorBenchmark.WASM.Client.csproj", "{D233FE17-6337-4909-AF54-E00DFC44942C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micke.BlazorBenchmark.WASM.Shared", "Micke.BlazorBenchmark.WASM\Shared\Micke.BlazorBenchmark.WASM.Shared.csproj", "{F838349A-2247-4A0E-AFE2-1948DFCC6A1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micke.BlazorBenchmark.WASM.Shared", "Micke.BlazorBenchmark.WASM\Shared\Micke.BlazorBenchmark.WASM.Shared.csproj", "{F838349A-2247-4A0E-AFE2-1948DFCC6A1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micke.BlazorBenchmark.SERV", "Micke.BlazorBenchmark.SERV\Micke.BlazorBenchmark.SERV.csproj", "{E347A169-6497-4836-97D4-5B77DDC6AFDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micke.BlazorBenchmark.SERV", "Micke.BlazorBenchmark.SERV\Micke.BlazorBenchmark.SERV.csproj", "{E347A169-6497-4836-97D4-5B77DDC6AFDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micke.BlazorBenchmark.GeneralUI", "Micke.BlazorBenchmark.GeneralUI\Micke.BlazorBenchmark.GeneralUI.csproj", "{EF7D5400-9B48-4FA0-BA70-1C67BB57D9FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micke.BlazorBenchmark.GeneralUI", "Micke.BlazorBenchmark.GeneralUI\Micke.BlazorBenchmark.GeneralUI.csproj", "{EF7D5400-9B48-4FA0-BA70-1C67BB57D9FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micke.BlazorBenchmark.Services", "Micke.BlazorBenchmark.Services\Micke.BlazorBenchmark.Services.csproj", "{77E670A0-40DE-4438-BD12-0EF4F80C9BBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micke.BlazorBenchmark.Services", "Micke.BlazorBenchmark.Services\Micke.BlazorBenchmark.Services.csproj", "{77E670A0-40DE-4438-BD12-0EF4F80C9BBF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
