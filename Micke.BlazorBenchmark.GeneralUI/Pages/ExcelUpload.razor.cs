@@ -66,9 +66,10 @@ namespace Micke.BlazorBenchmark.GeneralUI.Pages
         }
         else
         {
-          using (var reader = new System.IO.StreamReader(File.OpenReadStream()))
+          using (MemoryStream ms = new MemoryStream())
           {
-            Articles = await ArticleExcelReader.ReadAsync(reader);
+            await File.OpenReadStream().CopyToAsync(ms);
+            Articles = ArticleExcelReader.Read(ms);
           }
         }
 

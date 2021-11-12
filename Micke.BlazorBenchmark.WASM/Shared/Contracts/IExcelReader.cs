@@ -9,6 +9,6 @@ namespace Micke.BlazorBenchmark.WASM.Shared.Contracts
 {
   public interface IExcelReader<T> where T : class
   {
-    Task<IList<T>> ReadAsync(StreamReader stream);
+    IList<T> Read(Stream stream);
   }
 }

@@ -47,7 +47,7 @@
     },
 
     addAsync: async function (tableName, entityToAdd) {
-        console.log(entityToAdd);
+        
         entityToAdd = JSON.parse(entityToAdd);
         //console.log(entityToAdd);
         //delete entityToAdd.id;

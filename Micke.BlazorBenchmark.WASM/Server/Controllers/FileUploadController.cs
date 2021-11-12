@@ -26,11 +26,12 @@ namespace Micke.BlazorBenchmark.WASM.Server.Controllers
     [HttpPost]
     public async Task<IActionResult> Post(UploadedFile uploadedFile)
     {
+      await Task.CompletedTask;
       var fileBytes = uploadedFile.FileContent;
       IList<Article> result = new List<Article>();
 
       using (var reader = new System.IO.StreamReader(new MemoryStream(fileBytes))) {
-        result = await _excelReader.ReadAsync(reader);
+        result = _excelReader.Read(reader.BaseStream);
       }
 
       return Ok(result);
